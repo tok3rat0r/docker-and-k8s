@@ -1,0 +1,17 @@
+This is a Docker training exercise based on the Git repository at https://github.com/diranetafen/student-list
+
+The following procedure was used to complete the exercise:
+
+1. First, the Dockerfile found in /simple-api was written.
+2. Next, the Docker image was built with the command "docker build -t pozos-api ."
+3. Then, the Docker image was run as a container using "docker run --name pozos-api -d -p 5000:5000 -v $pwd/student_age.json:/data/student_age.json pozos-api"
+4. Running the given curl command, we see the expected response:
+$ curl -u toto:python -X GET http://localhost:5000/pozos/api/v1.0/get_student_ages
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100    64  100    64    0     0   4102      0 --:--:-- --:--:-- --:--:--  4571{
+  "student_ages": {
+    "alice": "12",
+    "bob": "13"
+  }
+}

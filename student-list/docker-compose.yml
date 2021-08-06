@@ -15,7 +15,7 @@ services:
     image: pozos-api:latest
     container_name: pozos-api
     ports:
-      - "5000"
+      - "5000:5000"
     networks:
       - app-network
     volumes:

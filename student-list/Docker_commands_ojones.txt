@@ -43,3 +43,4 @@ website_1  | [Fri Aug 06 20:26:31.146332 2021] [core:notice] [pid 1] AH00094: Co
 9. Unfortunately the PHP function 'file_get_contents' fails to communicate with the API, as seen in the screenshot in this folder.
 10. I rebuilt with Alpine, and connected to Alpine to test the curl command from step 4 but with 'pozos-api' instead of 'localhost'.
 11. This curl command works as expected, showing that the problem is with PHP.
+12. Exposing the external port 5000 and trying to connect to http://localhost:5000 in the PHP script also fails.

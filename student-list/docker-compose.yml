@@ -15,18 +15,16 @@ services:
     image: pozos-api:latest
     container_name: pozos-api
     ports:
-      - "5000:5000"
+      - "5000"
     networks:
       - app-network
     volumes:
       - "./simple_api/student_age.json:/data/student_age.json"
 
   website:
-    build:
-      context: ./website
-      args:
-        - USERNAME=toto
-        - PASSWORD=python
+    environment:
+      - USERNAME=toto
+      - PASSWORD=python
     image: php:apache
     ports:
       - "80:80"

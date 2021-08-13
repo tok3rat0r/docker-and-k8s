@@ -7,6 +7,8 @@ metadata:
 spec:
   ports:
     - port: 80
+      nodePort: 30086
+      name: http
   selector:
     app: wordpress
     tier: frontend
@@ -68,12 +70,12 @@ spec:
           value: wordpress-mysql
         - name: WORDPRESS_DB_PASSWORD
           value: password
-        ports:
-          - containerPort: 8080
-            name: wordpress
         volumeMounts:
         - name: wordpress-storage
           mountPath: /var/www/html
+        ports:
+          - containerPort: 80
+            name: wordpress
       volumes:
       - name: wordpress-storage
         persistentVolumeClaim:

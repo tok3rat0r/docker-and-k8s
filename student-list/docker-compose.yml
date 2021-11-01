@@ -1,0 +1,39 @@
+version: "3.8"
+
+services:
+
+  alpine:
+    image: alpine:latest
+    container_name: alpine-linux
+    ports:
+      - "8080:8080"
+    networks:
+      - app-network
+    command: tail -F anything
+
+  api:
+    image: pozos-api:latest
+    container_name: pozos-api
+    ports:
+      - "5000"
+    networks:
+      - app-network
+    volumes:
+      - "./simple_api/student_age.json:/data/student_age.json"
+
+  website:
+    environment:
+      - USERNAME=toto
+      - PASSWORD=python
+    image: php:apache
+    ports:
+      - "80:80"
+    networks:
+      - app-network
+    volumes:
+      - "./website:/var/www/html"
+    depends_on:
+      - api
+
+networks:
+  app-network:
